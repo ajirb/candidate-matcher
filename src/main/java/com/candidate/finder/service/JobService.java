@@ -22,7 +22,7 @@ public class JobService {
 
 	public Job getJob(long id) throws ValidationException {
 		Optional<Job> job = jobRepository.findById(id);
-		if (job.isEmpty())
+		if (!job.isPresent())
 			throw new ValidationException("Invalid Job id");
 
 		return job.get();

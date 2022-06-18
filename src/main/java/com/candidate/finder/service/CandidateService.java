@@ -32,11 +32,11 @@ public class CandidateService {
 	private CandidateSkillRepository candidateSkillRepository;
 
 	public Candidate getCandidate(long id) throws ValidationException {
-		Optional<Candidate> Candidate = candidateRepository.findById(id);
-		if (Candidate.isEmpty())
+		Optional<Candidate> candidate = candidateRepository.findById(id);
+		if (!candidate.isPresent())
 			throw new ValidationException("Invalid Candidate id");
 
-		return Candidate.get();
+		return candidate.get();
 	}
 
 	public Candidate createCandidate(CandidateRequest candidate) {
